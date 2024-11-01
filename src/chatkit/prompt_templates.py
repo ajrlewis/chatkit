@@ -2,7 +2,7 @@ from typing import Optional
 
 from loguru import logger
 
-ask = "{text}"
+ask = "{question}"
 extract = "Extract (or infer) these data points: `{data_points}` from the following text: `{text}`. If you're not able to extract a data point, return '' for it's value. Finally, return only the extracted data points as a JSON object in your response. Do not format your response in any other way."
 summarize = "Summarize the following text: `{text}`. Return only the summary of the text in your response."
 sentiment = "Determine the sentiment from the following text: `{text}`. Return only 'positive', 'negative' or 'neutral' depending on the sentiment. Do not include any other text."
