@@ -13,21 +13,21 @@ def get_token():
     return token
 
 
-def check_token_access(repo_id: str, token: str):
+def check_token_access(model: str, token: str):
     try:
-        auth_check(repo_id, token=token)
+        auth_check(model, token=token)
     except GatedRepoError:
-        raise GatedRepoError(f"you don't have permission to access {repo_id = }")
+        raise GatedRepoError(f"you don't have permission to access {model = }")
     except RepositoryNotFoundError:
         raise GatedRepoError(
-            f"the repository was not found or you do not have access {repo_id = }"
+            f"the repository was not found or you do not have access {model = }"
         )
 
 
-def get_client(repo_id: str) -> InferenceClient:
+def get_client(model: str) -> InferenceClient:
     token = get_token()  # Get the token
-    check_token_access(repo_id, token=token)  # Check the token can access the repo
-    client = InferenceClient(repo_id, token=token)  # Create and return the client
+    check_token_access(model, token=token)  # Check the token can access the repo
+    client = InferenceClient(model, token=token)  # Create and return the client
     return client
 
 
